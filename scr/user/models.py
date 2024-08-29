@@ -5,3 +5,8 @@ class User(models.Model):
     pseudo = models.CharField(max_length=10,unique=True)
     password = models.CharField(max_length=128)
     creat_at = models.DateField(auto_now_add=True)
+
+    def __str__(self) :
+        return self.password   #super().__str__()
+    
+    

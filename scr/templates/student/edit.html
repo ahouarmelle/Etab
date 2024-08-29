@@ -1,72 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home page</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body>
-    <div class="flex min-h-screen">
-      <!-- Sidebar -->
-      <aside class="w-64 bg-gray-800 text-white flex flex-col justify-between">
-        <div class="p-6">
-          <h2 class="text-3xl font-semibold text-center mb-8">Mon Etab</h2>
-          <nav>
-            <ul>
-              <li class="mb-4">
-                <a href="{% url 'dashboard:index' %}" class="hover:text-gray-400">Tableau de bord</a>
-              </li>
-              <li class="mb-4">
-                <a
-                  href="{% url 'student:index' %}"
-                  class="text-blue-400 hover:text-blue-500 font-medium"
-                  >Élèves</a
-                >
-              </li>
-              <li class="mb-4">
-                <a href="{% url 'teacher:index' %}" class="hover:text-gray-400">Professeurs</a>
-              </li>
-              <li class="mb-4">
-                <a href="{% url 'user:index' %}" class="hover:text-gray-400">Utilisateurs</a>
-              </li>
-              <li class="mb-4">
-                <a href="{% url 'rapport:index' %}" class="hover:text-gray-400">Rapport</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div class="p-6">
-          <a
-            href="#"
-            class="text-gray-400 hover:text-white flex items-center justify-center"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 mr-2"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M7 10V4a3 3 0 016 0v6a3 3 0 11-6 0z"
-                clip-rule="evenodd"
-              />
-              <path
-                fill-rule="evenodd"
-                d="M5 9a2 2 0 100-4 2 2 0 000 4zm10-2a2 2 0 110 4 2 2 0 010-4zm-2 8v2a3 3 0 01-6 0v-2a2 2 0 11-4 0v2a5 5 0 0010 0v-2a2 2 0 11-4 0z"
-                clip-rule="evenodd"
-              />
-            </svg>
-            Déconnexion
-          </a>
-        </div>
-      </aside>
+{% extends 'base.html' %}
+{% load static %}
 
+
+{% block content %}
       <!-- Main Content -->
       <div class="flex-1 p-6">
         <a
-          href="{% url 'teacher:index' %}"
+          href="{% url 'student:index' %}"
           class="text-gray-500 hover:text-gray-700 flex items-center mb-6"
         >
           <svg
@@ -87,10 +27,11 @@
         </a>
         <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
           <h1 class="text-2xl font-semibold mb-6 text-center">
-            Modifier le professeur - 738
+            Modifier l'élève -245
           </h1>
           <form action="#" method="POST" class="grid grid-cols-2 gap-6">
             <!-- Champ Nom -->
+            {{formE}}
             <div>
               
               <input
@@ -108,7 +49,7 @@
                 type="text"
                 id="prenom"
                 name="prenom"
-                value="Flora"
+                value="George"
                 class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </div>
@@ -142,54 +83,62 @@
                 >
               </div>
             </div>
-            
-            <!-- Champ Date de Naissance -->
+            <!-- Champ Matricule -->
             <div>
              
+              
               <input
-                
+                type="text"
+                id="matricule"
+                name="matricule"
+                value="GDJG83737"
+                class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              />
+            </div>
+            <!-- Champ Date de Naissance -->
+            <div>
+              
+              <input
                 id="date_naissance"
                 name="date_naissance"
-                value="22/03/1990"
+                value="01/01/2024"
                 class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </div>
             <!-- Champ Classe -->
             <div>
-             
+              
               <select
                 id="classe"
                 name="classe"
+                placeholder="Sélectionner une classe"
+                value="classe"
                 class="mt-1 block w-full p-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               >
                 
-                <option value="Anglais">Anglais</option>
-                
+                <option value="2 nd">2 nd</option>
+               
               </select>
             </div>
             <!-- Champ Téléphone -->
             <div>
-              <label
-                for="telephone"
-                class="block text-sm font-medium text-gray-700"
-                >Téléphone</label
-              >
+              
               <input
                 type="text"
                 id="telephone"
                 name="telephone"
-                value="0123456789"
+                value=" 0123456789"
                 class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </div>
             <!-- Champ Ville -->
             <div>
-             
+              
               <input
                 type="text"
                 id="ville"
                 name="ville"
-                value="Bouaké"
+                value="Dabou"
                 class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </div>
@@ -211,6 +160,4 @@
           </form>
         </div>
       </div>
-    </div>
-  </body>
-</html>
+{% endblock content %}
